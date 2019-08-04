@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="xxm&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Fastjson是一个性能很好的Java语言实现的Json解析器和生成器，由来自阿里巴巴的工程师开发。具有极快的性能，超越任何其他的Java Json Parser。特点概述：  快速：比其他任何基于Java的解析器和生成器更快，包括Jackson 强大：支持普通JDK类包括任意Java Bean Class、Collection、Map、Data或enum 零依赖：没有依赖其他任何类库，除JDK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中fastjson转map的六种方式">
+<meta property="og:url" content="http://yoursite.com/2019/08/04/fatjsonToMap/index.html">
 <meta property="og:site_name" content="xxm&#39;s blog">
+<meta property="og:description" content="Fastjson是一个性能很好的Java语言实现的Json解析器和生成器，由来自阿里巴巴的工程师开发。具有极快的性能，超越任何其他的Java Json Parser。特点概述：  快速：比其他任何基于Java的解析器和生成器更快，包括Jackson 强大：支持普通JDK类包括任意Java Bean Class、Collection、Map、Data或enum 零依赖：没有依赖其他任何类库，除JDK">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-08-04T09:35:28.898Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xxm&#39;s blog">
+<meta name="twitter:title" content="Java中fastjson转map的六种方式">
+<meta name="twitter:description" content="Fastjson是一个性能很好的Java语言实现的Json解析器和生成器，由来自阿里巴巴的工程师开发。具有极快的性能，超越任何其他的Java Json Parser。特点概述：  快速：比其他任何基于Java的解析器和生成器更快，包括Jackson 强大：支持普通JDK类包括任意Java Bean Class、Collection、Map、Data或enum 零依赖：没有依赖其他任何类库，除JDK">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/04/fatjsonToMap/">
 
 
 
 
 
-  <title>xxm's blog</title>
+  <title>Java中fastjson转map的六种方式 | xxm's blog</title>
   
 
 
@@ -140,8 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,9 +217,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/04/fatjsonToMap/" itemprop="url">Java中fastjson转map的六种方式</a></h1>
+          <h1 class="post-title" itemprop="name headline">Java中fastjson转map的六种方式</h1>
         
 
         <div class="post-meta">
@@ -298,9 +299,7 @@
       
 
       
-        
-          
-            <p><strong>Fastjson</strong>是一个性能很好的Java语言实现的Json解析器和生成器，由来自阿里巴巴的工程师开发。具有极快的性能，超越任何其他的Java Json Parser。特点概述：</p>
+        <p><strong>Fastjson</strong>是一个性能很好的Java语言实现的Json解析器和生成器，由来自阿里巴巴的工程师开发。具有极快的性能，超越任何其他的Java Json Parser。特点概述：</p>
 <ul>
 <li><strong>快速</strong>：比其他任何基于Java的解析器和生成器更快，包括Jackson</li>
 <li><strong>强大</strong>：支持普通JDK类包括任意Java Bean Class、Collection、Map、Data或enum</li>
@@ -312,8 +311,6 @@
 <h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;  </span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSONObject;  </span><br><span class="line"><span class="keyword">import</span> java.util.Map;  </span><br><span class="line"></span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * JSON字符串自动转换 </span></span><br><span class="line"><span class="comment"> *  </span></span><br><span class="line"><span class="comment"> */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonToMapTest01</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  </span><br><span class="line"></span><br><span class="line">        String str = <span class="string">"&#123;\"0\":\"zhangsan\",\"1\":\"lisi\",\"2\":\"wangwu\",\"3\":\"maliu\"&#125;"</span>;  </span><br><span class="line">        <span class="comment">//第一种方式  </span></span><br><span class="line">        Map maps = (Map)JSON.parse(str);  </span><br><span class="line">        System.out.println(<span class="string">"这个是用JSON类来解析JSON字符串!!!"</span>);  </span><br><span class="line">        <span class="keyword">for</span> (Object map : maps.entrySet())&#123;  </span><br><span class="line">            System.out.println(((Map.Entry)map).getKey()+<span class="string">"     "</span> + ((Map.Entry)map).getValue());  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">//第二种方式  </span></span><br><span class="line">        Map mapTypes = JSON.parseObject(str);  </span><br><span class="line">        System.out.println(<span class="string">"这个是用JSON类的parseObject来解析JSON字符串!!!"</span>);  </span><br><span class="line">        <span class="keyword">for</span> (Object obj : mapTypes.keySet())&#123;  </span><br><span class="line">            System.out.println(<span class="string">"key为："</span>+obj+<span class="string">"值为："</span>+mapTypes.get(obj));  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">//第三种方式  </span></span><br><span class="line">        Map mapType = JSON.parseObject(str,Map.class);  </span><br><span class="line">        System.out.println(<span class="string">"这个是用JSON类,指定解析类型，来解析JSON字符串!!!"</span>);  </span><br><span class="line">        <span class="keyword">for</span> (Object obj : mapType.keySet())&#123;  </span><br><span class="line">            System.out.println(<span class="string">"key为："</span>+obj+<span class="string">"值为："</span>+mapType.get(obj));  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">//第四种方式  </span></span><br><span class="line">        <span class="comment">/** </span></span><br><span class="line"><span class="comment">         * JSONObject是Map接口的一个实现类 </span></span><br><span class="line"><span class="comment">         */</span>  </span><br><span class="line">        Map json = (Map) JSONObject.parse(str);  </span><br><span class="line">        System.out.println(<span class="string">"这个是用JSONObject类的parse方法来解析JSON字符串!!!"</span>);  </span><br><span class="line">        <span class="keyword">for</span> (Object map : json.entrySet())&#123;  </span><br><span class="line">            System.out.println(((Map.Entry)map).getKey()+<span class="string">"  "</span>+((Map.Entry)map).getValue());  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">//第五种方式  </span></span><br><span class="line">        <span class="comment">/** </span></span><br><span class="line"><span class="comment">         * JSONObject是Map接口的一个实现类 </span></span><br><span class="line"><span class="comment">         */</span>  </span><br><span class="line">        JSONObject jsonObject = JSONObject.parseObject(str);  </span><br><span class="line">        System.out.println(<span class="string">"这个是用JSONObject的parseObject方法来解析JSON字符串!!!"</span>);  </span><br><span class="line">        <span class="keyword">for</span> (Object map : json.entrySet())&#123;  </span><br><span class="line">            System.out.println(((Map.Entry)map).getKey()+<span class="string">"  "</span>+((Map.Entry)map).getValue());  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="comment">//第六种方式  </span></span><br><span class="line">        <span class="comment">/** </span></span><br><span class="line"><span class="comment">         * JSONObject是Map接口的一个实现类 </span></span><br><span class="line"><span class="comment">         */</span>  </span><br><span class="line">        Map mapObj = JSONObject.parseObject(str,Map.class);  </span><br><span class="line">        System.out.println(<span class="string">"这个是用JSONObject的parseObject方法并执行返回类型来解析JSON字符串!!!"</span>);  </span><br><span class="line">        <span class="keyword">for</span> (Object map: json.entrySet())&#123;  </span><br><span class="line">            System.out.println(((Map.Entry)map).getKey()+<span class="string">"  "</span>+((Map.Entry)map).getValue());  </span><br><span class="line">        &#125;  </span><br><span class="line">        String strArr = <span class="string">"&#123;&#123;\"0\":\"zhangsan\",\"1\":\"lisi\",\"2\":\"wangwu\",\"3\":\"maliu\"&#125;,"</span> +  </span><br><span class="line">                <span class="string">"&#123;\"00\":\"zhangsan\",\"11\":\"lisi\",\"22\":\"wangwu\",\"33\":\"maliu\"&#125;&#125;"</span>;  </span><br><span class="line">       <span class="comment">// JSONArray.parse()  </span></span><br><span class="line">        System.out.println(json);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-          
-        
       
     </div>
     
@@ -330,144 +327,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/03/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xxm">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="xxm's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/03/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-03T21:36:21+08:00">
-                2019-08-03
-              </time>
+              <a href="/2019/08/03/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -477,10 +358,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -488,6 +370,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -508,8 +394,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -551,6 +446,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码块"><span class="nav-number">1.</span> <span class="nav-text">代码块</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -684,6 +595,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
